@@ -1,24 +1,20 @@
 <script setup>
-import { Sidebar, Header } from './components'
-import { useSettingStore } from './stores'
+import AuthenticateLayout from './layouts/AuthenticateLayout.vue';
+import GuestLayout from './layouts/GuestLayout.vue'
+import { useAuthStore } from './stores';
 
-const setting = useSettingStore();
-
+const auth = useAuthStore();
 </script>
 
 <template>
-  <div class="flex overflow-x-hidden h-screen">
-    <aside
-      class="fixed top-0 left-0 min-h-screen flex-shrink-0 w-64 flex flex-col border-r transition-all duration-300" :class="{ '-ml-64': !setting.sidebarOpen }" >
-      <Sidebar/>
-    </aside>
+  <div>
+    <AuthenticateLayout v-if="auth.isLoggedIn">
+      <RouterView/>
+    </AuthenticateLayout>
 
-    <div class="flex-1 transition-all duration-300" :class="{'ml-64' : setting.sidebarOpen}">
-      <Header/>
-      <main class="p-4 pt-18">
-        Main Content
-      </main>
-    </div>
+    <GuestLayout v-else>
+      <RouterView/>
+    </GuestLayout>
   </div>
 </template>
 
