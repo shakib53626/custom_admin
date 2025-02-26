@@ -9,7 +9,7 @@ const auth = useAuthStore();
 <template>
   <div>
     <AuthenticateLayout v-if="auth.isLoggedIn">
-      <RouterView/>
+      <RouterView/> 
     </AuthenticateLayout>
 
     <GuestLayout v-else>
