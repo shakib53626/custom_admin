@@ -1,5 +1,22 @@
 <script setup>
+import { ref } from "vue";
+import { useAuthStore } from "../stores";
+import { useRouter } from "vue-router";
 
+const router = useRouter()
+const auth = useAuthStore();
+
+const email    = ref('');
+const password = ref('');
+
+const handleLogin = () =>{
+    if(email.value && password.value){
+        auth.isLoggedIn = true;
+        auth.getAuthStatus = true;
+
+        router.push({name: 'home'});
+    }
+}
 </script>
 
 <template>
@@ -11,14 +28,14 @@
                 </span>
             </h2>
 
-            <form>
+            <form @submit="handleLogin">
                 <div class="mb-6">
                     <label for="email" class="block text-gray-700 text-sm font-bold mb-2">
                         <i class="fas fa-envelope mr-2"></i>Email
                     </label>
 
                     <div>
-                        <input id="email" type="email" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your email">
+                        <input id="email" type="email" v-model="email" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your email">
                     </div>
                 </div>
 
@@ -28,7 +45,7 @@
                     </label>
 
                     <div>
-                        <input id="password" type="password" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your password">
+                        <input id="password" type="password" v-model="password" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your password">
                     </div>
                 </div>
 

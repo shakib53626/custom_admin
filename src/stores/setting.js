@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 
 export const useSettingStore = defineStore('setting', {
   state: () => ({
-    sidebarOpen : false,
+    sidebarOpen : true,
   }),
 
   persist: true,
