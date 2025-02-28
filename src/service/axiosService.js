@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useAuth, useToken } from '@/stores';
+import { useAuthStore, useTokenStore } from '../stores';
 
 const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_APP_URL + '/api',
@@ -7,7 +7,7 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
 function (config) {
-    const token = useToken();
+    const token = useTokenStore();
     config.headers['Authorization'] = `Bearer ${token.getToken}`;
     return config;
 }, function (error) {
@@ -20,8 +20,8 @@ axiosInstance.interceptors.response.use(
   },
   (error) => {
     if (error.response && error.response.status === 401) {
-      const authInfo = useAuth();
-      const token = useToken();
+      const authInfo = useAuthStore();
+      const token = useTokenStore();
       authInfo.user = {};
       token.$reset();
     }
