@@ -12,8 +12,6 @@ const password = ref('');
 const handleLogin = () =>{
     if(email.value && password.value){
         auth.isLoggedIn = true;
-        auth.getAuthStatus = true;
-
         router.push({name: 'home'});
     }
 }
