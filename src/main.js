@@ -5,6 +5,8 @@ import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import router from './router'
 
+import 'boxicons/css/boxicons.min.css';
+
 const app = createApp(App);
 const pinia = createPinia()
 app.use(pinia);

@@ -43,14 +43,19 @@ onUnmounted(() => {
               <div class="relative inline-block text-left" ref="dropdownRef">
                 <!-- Dropdown Button -->
                 <button @click="toggleDropdown"
-                  class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 shadow-xs ring-gray-300 ring-inset hover:bg-gray-50"
-                  id="menu-button" aria-expanded="true" aria-haspopup="true">
-                  Options
-                  <svg class="-mr-1 size-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  class="inline-flex w-full justify-center items-center cursor-pointer" id="menu-button" aria-expanded="true" aria-haspopup="true">
+
+                  <img class="bg-gray-100/10 p-2 rounded-full me-2" src="../../assets/img/user.png" width="35" alt="">
+                  <div class="flex flex-col items-start">
+                    <h6 class="leading-none font-semibold">Shakibul Islam</h6>
+                    <span class="leading-none text-gray-300">Admin</span>
+                  </div>
+
+                  <!-- <svg class="-mr-1 size-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                     <path fill-rule="evenodd"
                       d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
                       clip-rule="evenodd" />
-                  </svg>
+                  </svg> -->
                 </button>
             
                 <!-- Dropdown Menu -->
@@ -69,7 +74,10 @@ onUnmounted(() => {
                     <a href="#" class="block px-4 py-2 text-sm text-gray-700">Add to favorites</a>
                   </div>
                   <div class="py-1">
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700">Delete</a>
+                    <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">
+                      <i class='bx bx-log-in me-2' style='' ></i>
+                      <span>Logout</span>
+                    </a>
                   </div>
                 </div>
               </div>
