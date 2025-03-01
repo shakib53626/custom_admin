@@ -10,11 +10,8 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.8",
-<<<<<<< HEAD
     "boxicons": "^2.1.4",
-=======
     "axios": "^1.8.1",
->>>>>>> fb7417f9d4cdefd8701c1fa5adbc13fb00e476e5
     "pinia": "^3.0.1",
     "pinia-plugin-persistedstate": "^4.2.0",
     "tailwindcss": "^4.0.8",
