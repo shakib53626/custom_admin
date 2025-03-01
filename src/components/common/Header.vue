@@ -1,8 +1,9 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import { useSettingStore } from '../../stores';
+import { useSettingStore, useAuthStore } from '../../stores';
 
 const setting = useSettingStore();
+const auth    = useAuthStore();
 
 const dropdownOpen = ref(false)
 const dropdownRef = ref(null)
@@ -74,7 +75,7 @@ onUnmounted(() => {
                     <a href="#" class="block px-4 py-2 text-sm text-gray-700">Add to favorites</a>
                   </div>
                   <div class="py-1">
-                    <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">
+                    <a href="javascript:void(0)" @click="auth.logout()" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">
                       <i class='bx bx-log-in me-2' style='' ></i>
                       <span>Logout</span>
                     </a>

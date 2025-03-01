@@ -1,7 +1,7 @@
 import { defineStore }  from 'pinia';
 import   axiosInstance  from '../service/axiosService';
 import { useTokenStore }     from '../stores'
-import { useRouter } from 'vue-router';
+import router from '../router';
 
 export const useAuthStore = defineStore('auth', {
     state:() => ({
@@ -49,11 +49,13 @@ export const useAuthStore = defineStore('auth', {
                 if(res.status === 200){
                     token.removeToken();
                     this.$reset();
+                    router.push({name :'login'});
                     return res;
                 }
             } catch (error) {
-                if(error.response){
+              if(error.response){                 
                     this.$reset();
+                    router.push({name :'login'});
                     return error.response;
                 }
             }

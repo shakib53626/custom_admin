@@ -9,10 +9,15 @@ const auth = useAuthStore();
 const email    = ref('');
 const password = ref('');
 
-const handleLogin = () =>{
-    if(email.value && password.value){
-        auth.isLoggedIn = true;
-        router.push({name: 'home'});
+const handleLogin = async() =>{
+    const res = await auth.login({
+        phone_number : email.value,
+        password     : password.value
+    });
+    if(res.success){
+        console.log(res);
+    }else{
+        console.log(res);
     }
 }
 </script>
@@ -33,7 +38,7 @@ const handleLogin = () =>{
                     </label>
 
                     <div>
-                        <input id="email" type="email" v-model="email" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your email">
+                        <input id="email" type="text" v-model="email" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your email">
                     </div>
                 </div>
 
@@ -48,7 +53,7 @@ const handleLogin = () =>{
                 </div>
 
                 <div class="flex items-center justify-center">
-                    <button type="submit" class="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-3 px-4 rounded focus:outline-none focus:shadow-outline w-full">
+                    <button type="submit" class="bg-gradient-to-r cursor-pointer from-blue-500 to-purple-500 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-3 px-4 rounded focus:outline-none focus:shadow-outline w-full">
                         LogIn
                     </button>
                 </div>
